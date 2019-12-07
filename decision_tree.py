@@ -1,4 +1,5 @@
 import json
+import re
 
 # Parser
 def parse(lines):
@@ -35,3 +36,14 @@ def tree_json(tree):
     with open('data/structure.json', 'w') as outfile:
         json.dump(res[0], outfile)
     print ('Conversion Success !')
+
+def tidy_tree(tree_text, feature_names):
+    numerics = re.findall('0\.\d{4,20}', tree_text)
+    for num in numerics:
+        tree_text = tree_text.replace(num, '{:1.4}'.format(float(num)))
+
+    feature_names_map = {'feature {:d}'.format(i): feat for i, feat in enumerate(feature_names)}
+
+    for k, v in feature_names_map.items():
+        tree_text = tree_text.replace(k, v)
+    return tree_text
