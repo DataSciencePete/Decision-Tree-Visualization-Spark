@@ -1,0 +1,3 @@
+# Ignore jetbrains files
+.idea
+*.pyc
