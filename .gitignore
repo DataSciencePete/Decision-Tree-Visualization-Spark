@@ -1,3 +1,5 @@
 # Ignore jetbrains files
+data/*.json
+data/*.txt
 .idea
 *.pyc
