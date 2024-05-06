@@ -22,7 +22,7 @@ def parse(lines):
 
 
 # Convert Tree to JSON
-def tree_json(tree):
+def tree_json(tree, outfile):
     data = []
     for line in tree.splitlines():
         if line.strip():
@@ -33,7 +33,7 @@ def tree_json(tree):
         if not line: break
     res = []
     res.append({'name': 'Root', 'children': parse(data)})
-    with open('data/structure.json', 'w') as outfile:
+    with open(outfile, 'w') as outfile:
         json.dump(res[0], outfile)
     print ('Conversion Success !')
 
